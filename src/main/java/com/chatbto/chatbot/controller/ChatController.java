@@ -6,7 +6,7 @@ import com.chatbto.chatbot.service.ChatService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/chat")
+@RequestMapping("/api/${api.version:v1}/chat")
 @CrossOrigin
 public class ChatController {
 

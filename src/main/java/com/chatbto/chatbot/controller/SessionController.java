@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/session")
+@RequestMapping("/api/${api.version:v1}/session")
 @CrossOrigin
 public class SessionController {
 

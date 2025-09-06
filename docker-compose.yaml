@@ -11,6 +11,11 @@ services:
       - "5400:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
     networks:
       - chatbot-network
 
@@ -20,14 +25,13 @@ services:
       dockerfile: Dockerfile
     container_name: chatbot-backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/chatbot_db
-      SPRING_DATASOURCE_USERNAME: chatbot_user
-      SPRING_DATASOURCE_PASSWORD: chatbot_pass
+      SPRING_PROFILES_ACTIVE: docker
       GEMINI_API_KEY: ${GEMINI_API_KEY}
     ports:
-      - "8000:8000"
+      - "8000:8080"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       - chatbot-network
 
