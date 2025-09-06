@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/chatbot_db
+    username: ${SPRING_DATASOURCE_USERNAME:chatbot_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:chatbot_pass}
+
+server:
+  port: 8080

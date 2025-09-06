@@ -35,7 +35,6 @@ dependencies {
 
     // Database dependency
     implementation 'org.postgresql:postgresql'
-    implementation 'org.flywaydb:flyway-core'
 
     // HTTP Client pour Gemini API
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
